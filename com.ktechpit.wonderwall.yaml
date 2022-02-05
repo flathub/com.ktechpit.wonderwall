@@ -34,7 +34,7 @@ modules:
       url: https://github.com/keshavbhatt/WonderWall-Packaging/releases/download/v7.0/wonderwall_7.0.389_flathub.zip
       only-arches:
         - x86_64
-      sha256: 95db3b9c3850d4bfbb901c6e727a0b19ac3938228974fa9cc8f1bffe7c398ea8
+      sha256: 5aa7bd33d2305e5d85f92878d88e14bdd35793318ba766f32278b44d0384d3ac
   
    #- type: dir
    #  path: src/
