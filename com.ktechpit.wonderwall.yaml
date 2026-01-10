@@ -15,11 +15,6 @@ finish-args:
 
   - --talk-name=org.freedesktop.FileManager1
   
-  - --filesystem=xdg-run/dconf
-  - --filesystem=~/.config/dconf:ro
-  - --talk-name=ca.desrt.dconf
-  - --env=DCONF_USER_CONFIG_DIR=.config/dconf
-  
   - --talk-name=org.elementary.Contractor
   - --system-talk-name=org.freedesktop.Accounts
   
@@ -27,15 +22,17 @@ modules:
   - name: ww
     buildsystem: simple
     build-commands:
-     - unzip wonderwall_7.0.389_flathub.zip -d ${FLATPAK_DEST}
+     - cp -va ww/* ${FLATPAK_DEST}
     sources:
-    - type: file
-      #path: wonderwall_7.0.389_flathub.zip
+    - type: archive
       url: https://github.com/keshavbhatt/WonderWall-Packaging/releases/download/v7.0/wonderwall_7.0.389_flathub.zip
+      dest: ww
+      strip-components: 0
       only-arches:
         - x86_64
       sha256: 5aa7bd33d2305e5d85f92878d88e14bdd35793318ba766f32278b44d0384d3ac
-  
-   #- type: dir
-   #  path: src/
-        
+    - type: patch
+      path: patches/wonderwall-appstream.patch
+      options:
+        - -d
+        - ww

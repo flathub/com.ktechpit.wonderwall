@@ -1,0 +1,60 @@
+diff --git a/share/metainfo/com.ktechpit.wonderwall.metainfo.xml b/share/metainfo/com.ktechpit.wonderwall.metainfo.xml
+index 26a763d..0911240 100644
+--- a/share/metainfo/com.ktechpit.wonderwall.metainfo.xml
++++ b/share/metainfo/com.ktechpit.wonderwall.metainfo.xml
+@@ -1,10 +1,12 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!-- Copyright 2021 Keshav Bhatt <keshavnrj@gmail.com> -->
+-<component type="desktop">
++<component type="desktop-application">
+   <id>com.ktechpit.wonderwall</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>LicenseRef-proprietary=https://raw.githubusercontent.com/keshavbhatt/WonderWall-Packaging/main/LICENSE</project_license>
+-  <developer_name>Keshav Bhatt</developer_name>
++  <developer id="com.ktechpit">
++    <name>Keshav Bhatt</name>
++  </developer>
+   <name>Wonderwall</name>
+   <summary>Wallpaper manager</summary>
+   <description>
+@@ -39,38 +41,9 @@
+   <url type="homepage">https://github.com/keshavbhatt/WonderWall-Packaging</url>
+   <update_contact>https://github.com/keshavbhatt/WonderWall-Packaging/issues</update_contact>
+   <launchable type="desktop-id">com.ktechpit.wonderwall.desktop</launchable>
+-   <content_rating type="oars-1.1">
+-      <content_attribute id="violence-cartoon">none</content_attribute>
+-      <content_attribute id="violence-fantasy">none</content_attribute>
+-      <content_attribute id="violence-realistic">none</content_attribute>
+-      <content_attribute id="violence-bloodshed">none</content_attribute>
+-      <content_attribute id="violence-sexual">none</content_attribute>
+-      <content_attribute id="violence-desecration">none</content_attribute>
+-      <content_attribute id="violence-slavery">none</content_attribute>
+-      <content_attribute id="violence-worship">none</content_attribute>
+-      <content_attribute id="drugs-alcohol">none</content_attribute>
+-      <content_attribute id="drugs-narcotics">none</content_attribute>
+-      <content_attribute id="drugs-tobacco">none</content_attribute>
+-      <content_attribute id="sex-nudity">mild</content_attribute>
+-      <content_attribute id="sex-themes">none</content_attribute>
+-      <content_attribute id="sex-homosexuality">none</content_attribute>
+-      <content_attribute id="sex-prostitution">none</content_attribute>
+-      <content_attribute id="sex-adultery">none</content_attribute>
+-      <content_attribute id="sex-appearance">none</content_attribute>
+-      <content_attribute id="language-profanity">none</content_attribute>
+-      <content_attribute id="language-humor">none</content_attribute>
+-      <content_attribute id="language-discrimination">none</content_attribute>
+-      <content_attribute id="social-chat">none</content_attribute>
+-      <content_attribute id="social-info">mild</content_attribute>
+-      <content_attribute id="social-audio">none</content_attribute>
+-      <content_attribute id="social-location">none</content_attribute>
+-      <content_attribute id="social-contacts">none</content_attribute>
++  <content_rating type="oars-1.1">
+       <content_attribute id="money-purchasing">intense</content_attribute>
+-      <content_attribute id="money-gambling">none</content_attribute>
+-    </content_rating>
+-  <provides>
+-    <id>com.ktechpit.wonderwall</id>
+-  </provides>
++  </content_rating>
+   <releases>
+   <release version="7.0" date="2021-07-20" type="stable" urgency="high">
+     <description>
