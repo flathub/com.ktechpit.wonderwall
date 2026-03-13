@@ -1,3 +1,4 @@
+app-id: com.ktechpit.wonderwall
 base: io.qt.qtwebengine.BaseApp
 base-version: '6.10'
 runtime: org.kde.Platform
