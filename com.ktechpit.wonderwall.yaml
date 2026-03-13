@@ -1,8 +1,7 @@
-app-id: com.ktechpit.wonderwall
-base: io.qt.qtwebkit.BaseApp
-base-version: '5.14'
+base: io.qt.qtwebengine.BaseApp
+base-version: '6.10'
 runtime: org.kde.Platform
-runtime-version: '5.14'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 command: wonderwall
 finish-args:
@@ -10,29 +9,54 @@ finish-args:
   - --share=ipc
   - --socket=fallback-x11
   - --socket=wayland
-  - --filesystem=xdg-download
   - --device=dri
+  - --env=INSTALL_TYPE=flatpak
 
-  - --talk-name=org.freedesktop.FileManager1
-  
-  - --talk-name=org.elementary.Contractor
-  - --system-talk-name=org.freedesktop.Accounts
+cleanup:
+  - /include
+  - /lib/cmake
+  - /share/man
+  - /share/doc
   
 modules:
-  - name: ww
+  - shared-modules/squashfs-tools/squashfs-tools.json
+
+  - name: wonderwall
     buildsystem: simple
     build-commands:
-     - cp -va ww/* ${FLATPAK_DEST}
+        - unsquashfs -no-progress *.snap
+        - install -Dm755 squashfs-root/usr/bin/wonderwall ${FLATPAK_DEST}/bin/wonderwall
+        - cp -r squashfs-root/usr/share/icons ${FLATPAK_DEST}/share/
+        - install -Dm644 squashfs-root/usr/share/applications/com.ktechpit.wonderwall.desktop ${FLATPAK_DEST}/share/applications/com.ktechpit.wonderwall.desktop
+        - desktop-file-edit --set-icon=${FLATPAK_ID} ${FLATPAK_DEST}/share/applications/com.ktechpit.wonderwall.desktop
+        - install -Dm644 squashfs-root/usr/share/metainfo/com.ktechpit.wonderwall.metainfo.xml ${FLATPAK_DEST}/share/metainfo/com.ktechpit.wonderwall.metainfo.xml
     sources:
-    - type: archive
-      url: https://github.com/keshavbhatt/WonderWall-Packaging/releases/download/v7.0/wonderwall_7.0.389_flathub.zip
-      dest: ww
-      strip-components: 0
-      only-arches:
-        - x86_64
-      sha256: 5aa7bd33d2305e5d85f92878d88e14bdd35793318ba766f32278b44d0384d3ac
-    - type: patch
-      path: patches/wonderwall-appstream.patch
-      options:
-        - -d
-        - ww
+        # =========================
+        # x86_64 (amd64) – stable
+        # =========================
+        - type: file
+          # Get stable amd64 snap URL:
+          # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/wonderwall | jq -r '.["channel-map"][] | select(.channel.architecture=="amd64" and   .channel.risk=="stable" and .channel.track=="latest") | .download.url'
+          url: https://api.snapcraft.io/api/v1/snaps/download/dTUYjQSnIgQUyVp54XoO5SwD1xkn4hzA_43.snap
+
+          # Get sha256:
+          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/dTUYjQSnIgQUyVp54XoO5SwD1xkn4hzA_43.snap | sha256sum
+          sha256: 65f6059824a3016b81ff97f26c1f72dd5dd32f4123821afd783917ce6cd9d0f7
+
+          only-arches:
+            - x86_64
+
+        # =========================
+        # arm64 (aarch64) – stable
+        # =========================
+        - type: file
+          # Get stable arm64 snap URL:
+          # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/wonderwall | jq -r '.["channel-map"][] | select(.channel.architecture=="arm64" and  .channel.risk=="stable" and .channel.track=="latest") | .download.url'
+          url: https://api.snapcraft.io/api/v1/snaps/download/dTUYjQSnIgQUyVp54XoO5SwD1xkn4hzA_44.snap
+
+          # Get sha256:
+          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/dTUYjQSnIgQUyVp54XoO5SwD1xkn4hzA_44.snap | sha256sum
+          sha256: 84e7db6721e4feb7aca527f7d755b13d8e3ccd0ff48e79d50f2404f215c678de
+
+          only-arches:
+            - aarch64
