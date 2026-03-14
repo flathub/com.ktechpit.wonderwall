@@ -53,11 +53,11 @@ modules:
         - type: file
           # Get stable arm64 snap URL:
           # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/wonderwall | jq -r '.["channel-map"][] | select(.channel.architecture=="arm64" and  .channel.risk=="stable" and .channel.track=="latest") | .download.url'
-          url: https://api.snapcraft.io/api/v1/snaps/download/dTUYjQSnIgQUyVp54XoO5SwD1xkn4hzA_44.snap
+          url: https://api.snapcraft.io/api/v1/snaps/download/dTUYjQSnIgQUyVp54XoO5SwD1xkn4hzA_52.snap
 
           # Get sha256:
-          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/dTUYjQSnIgQUyVp54XoO5SwD1xkn4hzA_44.snap | sha256sum
-          sha256: 84e7db6721e4feb7aca527f7d755b13d8e3ccd0ff48e79d50f2404f215c678de
+          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/dTUYjQSnIgQUyVp54XoO5SwD1xkn4hzA_52.snap | sha256sum
+          sha256: bd39070268d73a61b8cd7b517f4382bb88d2d1ed31ca4f5b01b4fccb945f8dfa
 
           only-arches:
             - aarch64
