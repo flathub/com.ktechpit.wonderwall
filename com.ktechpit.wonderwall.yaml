@@ -1,8 +1,8 @@
 app-id: com.ktechpit.wonderwall
 base: io.qt.qtwebengine.BaseApp
-base-version: '6.10'
+base-version: '6.11'
 runtime: org.kde.Platform
-runtime-version: '6.10'
+runtime-version: '6.11'
 sdk: org.kde.Sdk
 command: wonderwall
 finish-args:
@@ -41,11 +41,11 @@ modules:
         - type: file
           # Get stable amd64 snap URL:
           # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/wonderwall | jq -r '.["channel-map"][] | select(.channel.architecture=="amd64" and   .channel.risk=="stable" and .channel.track=="latest") | .download.url'
-          url: https://api.snapcraft.io/api/v1/snaps/download/dTUYjQSnIgQUyVp54XoO5SwD1xkn4hzA_51.snap
+          url: https://api.snapcraft.io/api/v1/snaps/download/dTUYjQSnIgQUyVp54XoO5SwD1xkn4hzA_54.snap
 
           # Get sha256:
-          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/dTUYjQSnIgQUyVp54XoO5SwD1xkn4hzA_51.snap | sha256sum
-          sha256: 4ec87664905d4a8c961ecdb0086ee6074d34d79ba4e54781bf204ee36a780a72
+          # curl -Ls https://api.snapcraft.io/api/v1/snaps/download/dTUYjQSnIgQUyVp54XoO5SwD1xkn4hzA_54.snap | sha256sum
+          sha256: cd54dc014a767f831ef4671bbcb76eaedb2edcb76191e1ebc01db5137de7c065
 
           only-arches:
             - x86_64
